@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.wh.backend.dao.*;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.wh.backend.dao.UserDAO", "com.wh.backend.dao.ProblemNoteDAO"})
+@MapperScan("com.wh.backend.dao")
 public class BackEndApplication {
 
     public static void main(String[] args) {

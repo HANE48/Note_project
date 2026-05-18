@@ -5,16 +5,20 @@
 
 <mapper namespace="com.wh.backend.dao.UserDAO">
     <select id="selectOneUser" parameterType="String" resultType="user">
-        SELECT * FROM user WHERE login_id = #{login_id}
+        SELECT * FROM users WHERE login_id = #{login_id}
     </select>
 
-
     <insert id="insertUser" parameterType="user">
-        INSERT INTO user (login_id, password, nickname, created_at)
+        INSERT INTO users (login_id, password, nickname, created_at)
         VALUES(#{login_id}, #{password}, #{nickname}, #{created_at})
     </insert>
 
     <delete id="delete" parameterType="int">
-        DELETE FROM user WHERE id=#{id}
+        DELETE FROM users WHERE id=#{id}
     </delete>
+
+    <select id="selectOneUserId" parameterType="int" resultType="user">
+        SELECT * FROM users WHERE id=#{id}
+    </select>
+
 </mapper>

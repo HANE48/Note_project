@@ -9,15 +9,13 @@ import com.wh.backend.util.PwdSecurity;
 import com.wh.backend.vo.UserVO;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserDAO userDAO;
@@ -35,7 +33,11 @@ public class UserController {
     @PostMapping("/api/users/login")
     @RequestBody
     public LoginResponse login(String login_id, String pwd){
+        System.out.println("11111");
+        System.out.println(login_id);
+        System.out.println(pwd);
         UserVO vo = userDAO.selectOneUser(login_id);
+
         if(vo != null){
             if(pwdsec.isRight(pwd, vo.getPassword())){
                 return new LoginResponse("success", vo.getId(), vo.getNickname());
@@ -43,6 +45,7 @@ public class UserController {
                 return new LoginResponse("pwd", null, null);
             }
         }else{
+            System.out.println("null");
             return new LoginResponse("id", null, null);
         }
     }
@@ -74,7 +77,7 @@ public class UserController {
      */
     @GetMapping("/api/users/")
     public UserDTO user(int id){
-        UserVO vo = userDAO.selectOneUser(id);
+        UserVO vo = userDAO.selectOneUserId(id);
         return new UserDTO(vo.getLogin_id(), vo.getNickname(), vo.getCreated_at());
     }
 
@@ -86,7 +89,7 @@ public class UserController {
      */
     @DeleteMapping("/api/users/")
     public UserDelDTO del(String pwd, int id){
-        UserVO vo = userDAO.selectOneUser(id);
+        UserVO vo = userDAO.selectOneUserId(id);
         if(pwdsec.isRight(pwd, vo.getPassword())){
             //비밀번호가 맞을 경우
             int res = userDAO.delete(id);
