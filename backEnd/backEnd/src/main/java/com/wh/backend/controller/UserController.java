@@ -30,9 +30,10 @@ public class UserController {
      * 로그인 시에 사용하는 API
      * @return 아이디가 틀리면 "ID", 비밀번호가 틀리면 "pwd", 성공은 "success"로 넘어옴
      */
+    //파라미터로 안넘어 오는 문제
     @PostMapping("/api/users/login")
     @RequestBody
-    public LoginResponse login(String login_id, String pwd){
+    public LoginResponse login(@RequestParam("login_id") String login_id, @RequestParam("pwd") String pwd){
         System.out.println("11111");
         System.out.println(login_id);
         System.out.println(pwd);
