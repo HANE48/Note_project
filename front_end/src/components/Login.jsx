@@ -17,21 +17,27 @@ function Login() {
             return;
         }
 
-        axios.post("http://localhost:8080/api/users/login", {
-            login_id: id,
-            pwd: pwd
-        }).then(res => {
-            const data = res.data;
-            if(data.result == "success"){
-                alert("${data.nickname}님 환영합니다");
-            }else if(data.result == "pwd"){
-                alert("비밀번호가 틀립니다.");
-            }else if(data.result == "id"){
-                alert("아이디가 틀리거나 존재하지 않습니다");
-            }
+        console.log(id + "/" + pwd);
+
+        const data = {loginId : id, pwd : pwd};
+
+        axios.post("http://localhost:8080/api/users/login", data)
+            .then(res => {
+                const data = res.data;
+                console.log(data.loginId + "/" + data.result);
+
+                if(data.result == "success"){
+                    alert(`${data.nickname}`+"님 환영합니다"); 
+
+                }else if(data.result == "pwd"){
+                    alert("비밀번호가 틀립니다.");
+
+                }else if(data.result == "id"){
+                    alert("아이디가 틀리거나 존재하지 않습니다");
+                }
         }).catch(err=> {
             console.log(err);
-            alert("서버와 통신중 에러가 발생했습니다")
+            alert("서버와 통신중 에러가 발생했습니다");
         })
         
 
@@ -40,23 +46,30 @@ function Login() {
     return (
         <div>
             <table border="1" align="center">
-                <tr>
-                    <th>ID</th>
-                    <td>
-                        <input type="text" name="login_id" value={id} onChange={(e) => { setId(e.target.value) }} />
-                    </td>
-                </tr>
-                <tr>
-                    <th>비밀번호</th>
-                    <td>
-                        <input type="password" name="pwd" value={pwd} onChange={(e) => { setPwd(e.target.value) }} />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="button" value="등록" onClick={send} />
-                    </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <td>
+                            <input type="text" name="login_id" value={id} onChange={(e) => { setId(e.target.value) }} />
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td>
+                            <input type="password" name="pwd" value={pwd} onChange={(e) => { setPwd(e.target.value) }} />
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan="2">
+                            <input type="button" value="등록" onClick={send} />
+                        </td>
+                    </tr>
+                </tfoot>
+                
             </table>
         </div>
     )

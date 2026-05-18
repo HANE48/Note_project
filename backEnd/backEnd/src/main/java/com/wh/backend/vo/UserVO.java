@@ -7,7 +7,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("user")
 public class UserVO {
     private int id;
-    private String login_id;
+    private String loginId;
     private String password;
     private String nickname;
     private String created_at;

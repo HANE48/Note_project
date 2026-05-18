@@ -1,13 +1,10 @@
 package com.wh.backend.controller;
 
 import com.wh.backend.dao.UserDAO;
-import com.wh.backend.dto.user.LoginResponse;
-import com.wh.backend.dto.user.RegisterResponseDTO;
-import com.wh.backend.dto.user.UserDTO;
-import com.wh.backend.dto.user.UserDelDTO;
+import com.wh.backend.dto.user.*;
 import com.wh.backend.util.PwdSecurity;
 import com.wh.backend.vo.UserVO;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +16,7 @@ import java.time.LocalDate;
 public class UserController {
 
     private final UserDAO userDAO;
-    private PwdSecurity pwdsec;
+    //private PwdSecurity pwdsec;
 
     @GetMapping("test")
     public String test(){
@@ -30,23 +27,21 @@ public class UserController {
      * 로그인 시에 사용하는 API
      * @return 아이디가 틀리면 "ID", 비밀번호가 틀리면 "pwd", 성공은 "success"로 넘어옴
      */
-    //파라미터로 안넘어 오는 문제
     @PostMapping("/api/users/login")
-    @RequestBody
-    public LoginResponse login(@RequestParam("login_id") String login_id, @RequestParam("pwd") String pwd){
-        System.out.println("11111");
-        System.out.println(login_id);
-        System.out.println(pwd);
-        UserVO vo = userDAO.selectOneUser(login_id);
+    public LoginResponse login(@RequestBody LoginRequest req){
+
+        System.out.println(req.getLoginId());
+        System.out.println(req.getPwd());
+        UserVO vo = userDAO.selectOneUser(req.getLoginId());
+        System.out.println(vo == null);
 
         if(vo != null){
-            if(pwdsec.isRight(pwd, vo.getPassword())){
+            if(vo.getPassword().equals(req.getPwd())){
                 return new LoginResponse("success", vo.getId(), vo.getNickname());
             }else{
                 return new LoginResponse("pwd", null, null);
             }
         }else{
-            System.out.println("null");
             return new LoginResponse("id", null, null);
         }
     }
@@ -57,10 +52,9 @@ public class UserController {
      * @return 성공/실패
      */
     @PostMapping("/api/users")
-    @RequestBody
     public RegisterResponseDTO register(UserVO vo){
         //비밀번호 암호화
-        vo.setPassword(pwdsec.pwdEncoding(vo.getPassword()));
+        //vo.setPassword(pwdsec.pwdEncoding(vo.getPassword()));
         //가입한 일자 저장
         vo.setCreated_at(LocalDate.now().toString());
         int res = userDAO.insertUser(vo);
@@ -79,7 +73,7 @@ public class UserController {
     @GetMapping("/api/users/")
     public UserDTO user(int id){
         UserVO vo = userDAO.selectOneUserId(id);
-        return new UserDTO(vo.getLogin_id(), vo.getNickname(), vo.getCreated_at());
+        return new UserDTO(vo.getLoginId(), vo.getNickname(), vo.getCreated_at());
     }
 
     /**
@@ -91,12 +85,12 @@ public class UserController {
     @DeleteMapping("/api/users/")
     public UserDelDTO del(String pwd, int id){
         UserVO vo = userDAO.selectOneUserId(id);
-        if(pwdsec.isRight(pwd, vo.getPassword())){
+        if(pwd.equals(vo.getPassword())){
             //비밀번호가 맞을 경우
             int res = userDAO.delete(id);
-            return new UserDelDTO(res == 1 ? "success" : "fail", vo.getLogin_id());
+            return new UserDelDTO(res == 1 ? "success" : "fail", vo.getLoginId());
         }else{
-            return new UserDelDTO("fail", vo.getLogin_id());
+            return new UserDelDTO("fail", vo.getLoginId());
         }
     }
 
