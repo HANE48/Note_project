@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.wh'
+version = '0.0.1-SNAPSHOT'
+description = 'backEnd'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.1'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jdbc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:4.0.1'
+    testCompileOnly 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // 스프링부트 최신 버전용 스웨거(Swagger/OpenAPI) 라이브러리
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
+
+    //비밀번호 암호화를 위한 의존성
+    // 비밀번호 암호화(BCrypt)를 위한 스프링 시큐리티 크립토 라이브러리
+    implementation 'org.springframework.security:spring-security-crypto'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
