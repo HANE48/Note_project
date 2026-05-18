@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
     let [id, setId] = useState('');
@@ -28,7 +29,7 @@ function Login() {
 
                 if(data.result == "success"){
                     alert(`${data.nickname}`+"님 환영합니다"); 
-
+                    Navigate("/")
                 }else if(data.result == "pwd"){
                     alert("비밀번호가 틀립니다.");
 

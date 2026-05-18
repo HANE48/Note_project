@@ -1,0 +1,350 @@
+/* =========================================================
+ * [테마별 색상 정의 구역] - 디자인 전면 수정
+ * ========================================================= */
+
+/* ① 다크 모드 스타일 변수 (기존과 동일) */
+.dashboard-container.dark {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-todo-card: #0f172a;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --border-color: #334155;
+  --shadow-card: none; /* 다크모드는 그림자 안 씀 */
+}
+
+/* ② 라이트 모드 스타일 변수 🚨 [요청사항 반영 수정]
+ * - 배경을 순백색으로 변경하고, 선 색상을 조금 더 명확하게 잡아 '선'이 보이게 함
+ */
+.dashboard-container.light {
+  --bg-main: #ffffff;       /* 👈 배경을 아예 하얗게 (이지적인 느낌) */
+  --bg-card: #ffffff;       /* 👈 카드도 하얗게 */
+  --bg-todo-card: #ffffff;  /* 👈 오답 카드도 하얗게 */
+  --text-main: #1e293b;     /* 👈 글자색을 약간 부드러운 검정으로 */
+  --text-sub: #64748b;
+  --border-color: #e2e8f0;  /* 👈 선색은 연하지만 명확하게 */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* 섬세한 그림자 살짝만 */
+}
+
+/* =========================================================
+ * [기존 레이아웃 스타일 디자인 - 세부 수정 포함]
+ * ========================================================= */
+.dashboard-container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: monospace, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s; /* 테마 전환 부드럽게 */
+}
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: var(--bg-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  border-bottom: 1px solid var(--border-color); /* 👈 네비게이션 하단 선 */
+  box-sizing: border-box;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 20px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #38bdf8; /* 포인트 컬러는 유지 */
+}
+
+.nav-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.menu-item {
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--text-sub);
+  transition: 0.2s;
+  padding-bottom: 5px;
+}
+
+.menu-item.active {
+  color: var(--text-main);
+  border-bottom: 2px solid #38bdf8;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 테마 토글 버튼 스타일 */
+.theme-toggle-btn {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color); /* 👈 버튼도 선 처리 */
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: monospace;
+  transition: 0.2s;
+  margin-right: 5px;
+}
+.theme-toggle-btn:hover {
+  background-color: var(--border-color);
+}
+
+.user-name {
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: var(--text-sub);
+  border: 1px solid var(--border-color); /* 👈 버튼 선 처리 */
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: monospace;
+  transition: 0.2s;
+}
+
+.login-btn {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: monospace;
+  transition: 0.2s;
+}
+
+.content-body {
+  width: 100%;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  gap: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.left-column {
+  flex: 6.5;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.right-column {
+  flex: 3.5;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* 대형 환영 배너 */
+.welcome-banner {
+  width: 100%;
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color); /* 👈 배너 전체 선 둘르기 */
+  box-sizing: border-box;
+  box-shadow: var(--shadow-card); /* 라이트모드일때만 미세한 그림자 */
+}
+
+.greeting {
+  font-size: 30px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.subtext {
+  color: var(--text-sub);
+  font-style: italic;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+/* 스트릭 뱃지 구역 - 선 처리로 세련되게 */
+.streak-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--bg-main); /* 👈 라이트모드에선 배경이 흰색이라 깨끗해보임 */
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color); /* 👈 스트릭 영역도 선 둘르기 */
+  width: fit-content;
+}
+
+.fire-emoji {
+  font-size: 24px;
+}
+
+.streak-title {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: bold;
+}
+
+.streak-days {
+  font-size: 22px;
+  font-weight: bold;
+  color: #f97316;
+}
+
+/* 잔디밭 구역 */
+.grass-section {
+  width: 100%;
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color); /* 👈 잔디 구역도 선 둘르기 */
+  box-sizing: border-box;
+  box-shadow: var(--shadow-card);
+}
+
+.section-title {
+  font-size: 14px;
+  color: var(--text-sub);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.grass-wrapper {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grass-block {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  transition: 0.2s;
+  /* 🚨 라이트모드에서 빈 잔디 블록에 미세한 테두리를 줘서 존재감 표시 */
+  border: 1px solid rgba(0, 0, 0, 0.03); 
+}
+
+/* 우측 오답 미션 리스트 상자 */
+.todo-container {
+  width: 100%;
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color); /* 👈 전체 컨테이너 선 둘르기 */
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.task-count {
+  font-size: 11px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 오답 카드 개별 디자인 - 선 처리 */
+.todo-card {
+  width: 100%;
+  background-color: var(--bg-todo-card);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color); /* 👈 개별 카드도 선 둘르기 (중요) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+.todo-card:hover {
+  /* 라이트모드에선 호버 시 선을 조금 더 진하게 */
+  border-color: #cbd5e1; 
+  transform: translateY(-1px);
+}
+
+.todo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prob-number {
+  font-size: 12px;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.prob-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.prob-type {
+  font-size: 11px;
+  color: var(--text-sub);
+}
+
+/* 디데이 뱃지 디자인 유지 */
+.dday-badge {
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #ef4444;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
