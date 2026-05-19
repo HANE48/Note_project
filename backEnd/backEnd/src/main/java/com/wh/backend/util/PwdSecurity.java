@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class PwdSecurity {
-    private BCryptPasswordEncoder encoder;
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     /**
      * 비밀번호를 암호화 후 암호화 한 비밀번호를 리턴

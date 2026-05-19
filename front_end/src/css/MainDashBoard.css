@@ -348,3 +348,40 @@
   border-radius: 4px;
   white-space: nowrap;
 }
+
+/* =========================================================
+ * [우측 상단 닉네임 버튼 커스텀 스타일]
+ * ========================================================= */
+
+/* 닉네임을 감싸는 영역 전체를 하나의 버튼처럼 세팅 */
+.user-profile-click {
+  display: flex;
+  align-items: center;
+  gap: 6px;                  /* 아이콘과 글자 사이 간격 */
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none !important; /* 🚨 혹시 남아있을 밑줄 완전 박멸 */
+}
+
+/* 사람 모양 아이콘 스타일 */
+.profile-icon {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* 🚨 마우스를 올렸을 때(Hover) 터지는 이쁜 하이라이트 효과 */
+.user-profile-click:hover {
+  background-color: var(--border-color); /* 테마에 맞는 은은한 배경색이 감돎 */
+}
+
+/* 다크모드일 때 마우스 올리면 글자가 민트블루색으로 짜릿하게 변함 */
+.dashboard-container.dark .user-profile-click:hover .user-name {
+  color: #38bdf8;
+}
+
+/* 라이트모드일 때 마우스 올리면 글자가 조금 더 선명해짐 */
+.dashboard-container.light .user-profile-click:hover .user-name {
+  color: #0284c7; /* 조금 더 짙은 푸른빛 */
+}

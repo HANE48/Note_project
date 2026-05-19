@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class UserController {
 
     private final UserDAO userDAO;
-    //private PwdSecurity pwdsec;
+    private final PwdSecurity pwdsec;
 
     @GetMapping("test")
     public String test(){
@@ -29,14 +29,10 @@ public class UserController {
      */
     @PostMapping("/api/users/login")
     public LoginResponse login(@RequestBody LoginRequest req){
-
-        System.out.println(req.getLoginId());
-        System.out.println(req.getPwd());
         UserVO vo = userDAO.selectOneUser(req.getLoginId());
-        System.out.println(vo == null);
 
         if(vo != null){
-            if(vo.getPassword().equals(req.getPwd())){
+            if(pwdsec.isRight(req.getPwd(), vo.getPassword())){
                 return new LoginResponse("success", vo.getId(), vo.getNickname());
             }else{
                 return new LoginResponse("pwd", null, null);
@@ -52,9 +48,9 @@ public class UserController {
      * @return 성공/실패
      */
     @PostMapping("/api/users")
-    public RegisterResponseDTO register(UserVO vo){
+    public RegisterResponseDTO register(@RequestBody UserVO vo){
         //비밀번호 암호화
-        //vo.setPassword(pwdsec.pwdEncoding(vo.getPassword()));
+        vo.setPassword(pwdsec.pwdEncoding(vo.getPassword()));
         //가입한 일자 저장
         vo.setCreated_at(LocalDate.now().toString());
         int res = userDAO.insertUser(vo);

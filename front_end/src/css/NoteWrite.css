@@ -1,0 +1,53 @@
+/* =========================================================
+ * [글쓰기 창 전용 상단 네비게이션 바]
+ * ========================================================= */
+.write-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    /* 카드가 하얗게 변할 때 같이 투명or하얗게 연동 */
+}
+
+/* 대시보드 로고 스타일 그대로 복제 */
+.logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 22px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: var(--text-main);
+}
+
+/* 🚨 로고 클릭 버튼 효과 */
+.clickable-logo {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.clickable-logo:hover {
+    opacity: 0.7;
+}
+
+/* 우측 가이드 텍스트 */
+.nav-hint {
+    font-size: 12px;
+    font-weight: bold;
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}

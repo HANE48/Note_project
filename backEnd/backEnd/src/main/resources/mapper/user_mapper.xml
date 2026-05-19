@@ -10,7 +10,7 @@
 
     <insert id="insertUser" parameterType="user">
         INSERT INTO users (login_id, password, nickname, created_at)
-        VALUES(#{login_id}, #{password}, #{nickname}, #{created_at})
+        VALUES(#{loginId}, #{password}, #{nickname}, #{created_at})
     </insert>
 
     <delete id="delete" parameterType="int">

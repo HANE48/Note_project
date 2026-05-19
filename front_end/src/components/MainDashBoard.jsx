@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/MainDashboard.css'; 
 
-function MainDashboard() {
+function MainDashboard(props) {
     const navigate = useNavigate(); 
-
-    // 상태 관리 (State)
-    const [nickname, setNickname] = useState(''); 
-    const [isLoggedIn, setIsLoggedIn] = useState(false); 
-    
-    // 🚨 [테마 상태 변수 추가] true면 다크모드, false면 라이트모드
-    const [isDarkMode, setIsDarkMode] = useState(true); 
-
     const [todoList, setTodoList] = useState([
         { id: 1, number: 12865, title: '평범한 배낭', type: 'DP', dday: 'D-1' },
         { id: 2, number: 1753, title: '최단경로', type: '다익스트라', dday: 'D-3' },
         { id: 3, number: 1920, title: '수 찾기', type: '이분탐색', dday: 'D-7' },
     ]);
 
+    const logout = () => {
+        if(!confirm("로그아웃 하시겠습니까?")){
+            return;
+        }
+
+        props.setIsLogin(false);
+        props.setUser('');
+        props.setId('');
+
+        localStorage.removeItem('isLogin');
+        localStorage.removeItem('user');
+        localStorage.removeItem('id');
+
+        alert("로그아웃 되었습니다.");
+        navigate("/");
+    }
+
     return (
         /* 🚨 [핵심 로직] isDarkMode 값에 따라 클래스명에 'dark' 또는 'light'를 동적으로 붙여줌! */
-        <div className={`dashboard-container ${isDarkMode ? 'dark' : 'light'}`}>
-            
+        <div className={`dashboard-container ${props.isDarkMode ? 'dark' : 'light'}`}>
             {/* 상단 네비게이션 바 */}
             <header className="navbar">
                 <div className="logo-row">
                     <span className="logo-icon">💻</span>
-                    <h2 className="logo-text">BOJ_NOTE_STUDIO</h2>
+                    <h2 className="logo-text">NOTE_STUDIO</h2>
                 </div>
                 
                 <nav className="nav-menu">
@@ -36,18 +44,21 @@ function MainDashboard() {
                 </nav>
                 
                 <div className="user-info">
-                    {/* 🚨 [테마 토글 버튼 추가] 누를 때마다 상태를 반대로(!) 반전시킴 */}
-                    <button className="theme-toggle-btn" onClick={() => setIsDarkMode(!isDarkMode)}>
-                        {isDarkMode ? '☀️ 라이트모드' : '🌙 다크모드'}
+                    <button className="theme-toggle-btn" onClick={() => props.setIsDarkMode(!props.isDarkMode)}>
+                        {props.isDarkMode ? '☀️ 라이트모드' : '🌙 다크모드'}
                     </button>
 
-                    {isLoggedIn ? (
+                    {props.isLogin ? (
                         <>
-                            <span className="user-name">{nickname}님</span>
-                            <button className="logout-btn" onClick={() => setIsLoggedIn(false)}>로그아웃</button>
+                            {/* 🚨 [디자인 변경] 클릭할 수 있는 닉네임 구역을 프로필 아이콘과 함께 배치 */}
+                            <span className="user-profile-click" onClick={() => navigate('/user-detail.do')}>
+                                <span className="profile-icon">👤</span>
+                                <span className="user-name">{props.user}님</span>
+                            </span>
+                            <button className="logout-btn" onClick={logout}>로그아웃</button>
                         </>
                     ) : (
-                        <button className="login-btn" onClick={() => navigate('/login')}>로그인</button>
+                        <button className="login-btn" onClick={() => navigate('/login.do')}>로그인</button>
                     )}
                 </div>
             </header>
@@ -56,9 +67,11 @@ function MainDashboard() {
             <div className="content-body">
                 
                 {/* [좌측 영역] 환영 배너 & 잔디밭 (65%) */}
-                <div className="left-column">
+                <div className="left-column">   
                     <section className="welcome-banner">
-                        <h1 className="greeting">Welcome Back, {nickname}! 👋</h1>
+                        {props.isLogin ? <h1 className="greeting">Welcome Back, {props.user}! 👋</h1> : 
+                        <h1 className='greeting'>환영합니다! 로그인후 이용해주세요!</h1>
+                        }
                         <p className="subtext">"코드에 버그가 없다면, 아직 충분히 복잡하지 않은 것이다."</p>
                         
                         <div className="streak-status">
@@ -69,8 +82,10 @@ function MainDashboard() {
                             </div>
                         </div>
                     </section>
+                    
+                    
 
-                    <section className="grass-section">
+                    {/* <section className="grass-section">
                         <h3 className="section-title">SOLVED STREAK (RECENT 6 MONTHS)</h3>
                         <div className="grass-wrapper">
                             {[...Array(48)].map((_, i) => (
@@ -84,7 +99,7 @@ function MainDashboard() {
                                 />
                             ))}
                         </div>
-                    </section>
+                    </section> */}
                 </div>
 
                 {/* [우측 영역] 오늘 풀어볼 오답 리스트 (35%) */}
@@ -92,7 +107,14 @@ function MainDashboard() {
                     <section className="todo-container">
                         <div className="todo-header">
                             <h3 className="section-title">🎯 TODAY'S REVIEW TASK</h3>
-                            <span className="task-count">{todoList.length} REMAINING</span>
+                            {props.isLogin && (
+                                <button
+                                    className="add-note-toggle-btn"
+                                    onClick={() => navigate('/write.do')} 
+                                >
+                                    ➕ 새 노트 작성
+                                </button>
+                            )}
                         </div>
                         
                         <div className="todo-list">
