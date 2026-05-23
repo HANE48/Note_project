@@ -4,6 +4,7 @@ import com.wh.backend.dao.UserDAO;
 import com.wh.backend.dto.user.*;
 import com.wh.backend.util.PwdSecurity;
 import com.wh.backend.vo.UserVO;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,6 @@ public class UserController {
 
     private final UserDAO userDAO;
     private final PwdSecurity pwdsec;
-
-    @GetMapping("test")
-    public String test(){
-        return "";
-    }
 
     /**
      * 로그인 시에 사용하는 API
@@ -40,6 +36,7 @@ public class UserController {
         }else{
             return new LoginResponse("id", null, null);
         }
+
     }
 
     /**

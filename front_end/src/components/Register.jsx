@@ -29,11 +29,10 @@ function Register(props){
             alert("닉네임을 입력해주세요");
             return;
         }
-
-        // 🚨 [로직 수정] 비밀번호 불일치 시 아래 axios가 실행되지 않게 락(return)을 걸어야 해!
+        
         if(pwd !== ckpwd){
             alert("올바른 비밀번호를 입력해주세요");
-            document.getElementById("pwdck").focus(); // focus 뒤에 괄호() 붙여야 실행됨!
+            document.getElementById("pwdck").focus(); 
             return; 
         }
 
@@ -49,7 +48,7 @@ function Register(props){
             const data = res.data;
             if(data.result === 'success'){
                 alert("가입 성공");
-                navigate("/login"); // 🚨 location.href 대신 리액트 무새로고침 라우터 이동!
+                navigate("/login.do"); 
             } else {
                 alert("가입 실패"); 
             }
@@ -61,7 +60,7 @@ function Register(props){
     } //register
 
     const back = () => {
-        navigate("/"); // 🚨 메인으로 무새로고침 이동
+        navigate("/"); 
     }
 
     return(

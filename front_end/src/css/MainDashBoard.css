@@ -10,20 +10,27 @@
   --text-main: #f8fafc;
   --text-sub: #94a3b8;
   --border-color: #334155;
-  --shadow-card: none; /* 다크모드는 그림자 안 씀 */
+  --shadow-card: none;
+  /* 다크모드는 그림자 안 씀 */
 }
 
 /* ② 라이트 모드 스타일 변수 🚨 [요청사항 반영 수정]
  * - 배경을 순백색으로 변경하고, 선 색상을 조금 더 명확하게 잡아 '선'이 보이게 함
  */
 .dashboard-container.light {
-  --bg-main: #ffffff;       /* 👈 배경을 아예 하얗게 (이지적인 느낌) */
-  --bg-card: #ffffff;       /* 👈 카드도 하얗게 */
-  --bg-todo-card: #ffffff;  /* 👈 오답 카드도 하얗게 */
-  --text-main: #1e293b;     /* 👈 글자색을 약간 부드러운 검정으로 */
+  --bg-main: #ffffff;
+  /* 👈 배경을 아예 하얗게 (이지적인 느낌) */
+  --bg-card: #ffffff;
+  /* 👈 카드도 하얗게 */
+  --bg-todo-card: #ffffff;
+  /* 👈 오답 카드도 하얗게 */
+  --text-main: #1e293b;
+  /* 👈 글자색을 약간 부드러운 검정으로 */
   --text-sub: #64748b;
-  --border-color: #e2e8f0;  /* 👈 선색은 연하지만 명확하게 */
-  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* 섬세한 그림자 살짝만 */
+  --border-color: #e2e8f0;
+  /* 👈 선색은 연하지만 명확하게 */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  /* 섬세한 그림자 살짝만 */
 }
 
 /* =========================================================
@@ -41,7 +48,8 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  transition: background-color 0.3s, color 0.3s; /* 테마 전환 부드럽게 */
+  transition: background-color 0.3s, color 0.3s;
+  /* 테마 전환 부드럽게 */
 }
 
 .navbar {
@@ -52,7 +60,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  border-bottom: 1px solid var(--border-color); /* 👈 네비게이션 하단 선 */
+  border-bottom: 1px solid var(--border-color);
+  /* 👈 네비게이션 하단 선 */
   box-sizing: border-box;
 }
 
@@ -70,7 +79,8 @@
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 1px;
-  color: #38bdf8; /* 포인트 컬러는 유지 */
+  color: #38bdf8;
+  /* 포인트 컬러는 유지 */
 }
 
 .nav-menu {
@@ -102,7 +112,8 @@
 .theme-toggle-btn {
   background-color: transparent;
   color: var(--text-main);
-  border: 1px solid var(--border-color); /* 👈 버튼도 선 처리 */
+  border: 1px solid var(--border-color);
+  /* 👈 버튼도 선 처리 */
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
@@ -111,6 +122,7 @@
   transition: 0.2s;
   margin-right: 5px;
 }
+
 .theme-toggle-btn:hover {
   background-color: var(--border-color);
 }
@@ -124,7 +136,8 @@
 .logout-btn {
   background-color: transparent;
   color: var(--text-sub);
-  border: 1px solid var(--border-color); /* 👈 버튼 선 처리 */
+  border: 1px solid var(--border-color);
+  /* 👈 버튼 선 처리 */
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
@@ -179,9 +192,11 @@
   background-color: var(--bg-card);
   padding: 40px;
   border-radius: 12px;
-  border: 1px solid var(--border-color); /* 👈 배너 전체 선 둘르기 */
+  border: 1px solid var(--border-color);
+  /* 👈 배너 전체 선 둘르기 */
   box-sizing: border-box;
-  box-shadow: var(--shadow-card); /* 라이트모드일때만 미세한 그림자 */
+  box-shadow: var(--shadow-card);
+  /* 라이트모드일때만 미세한 그림자 */
 }
 
 .greeting {
@@ -202,10 +217,12 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  background-color: var(--bg-main); /* 👈 라이트모드에선 배경이 흰색이라 깨끗해보임 */
+  background-color: var(--bg-main);
+  /* 👈 라이트모드에선 배경이 흰색이라 깨끗해보임 */
   padding: 18px;
   border-radius: 8px;
-  border: 1px solid var(--border-color); /* 👈 스트릭 영역도 선 둘르기 */
+  border: 1px solid var(--border-color);
+  /* 👈 스트릭 영역도 선 둘르기 */
   width: fit-content;
 }
 
@@ -231,7 +248,8 @@
   background-color: var(--bg-card);
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid var(--border-color); /* 👈 잔디 구역도 선 둘르기 */
+  border: 1px solid var(--border-color);
+  /* 👈 잔디 구역도 선 둘르기 */
   box-sizing: border-box;
   box-shadow: var(--shadow-card);
 }
@@ -258,7 +276,7 @@
   border-radius: 4px;
   transition: 0.2s;
   /* 🚨 라이트모드에서 빈 잔디 블록에 미세한 테두리를 줘서 존재감 표시 */
-  border: 1px solid rgba(0, 0, 0, 0.03); 
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 /* 우측 오답 미션 리스트 상자 */
@@ -267,7 +285,8 @@
   background-color: var(--bg-card);
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid var(--border-color); /* 👈 전체 컨테이너 선 둘르기 */
+  border: 1px solid var(--border-color);
+  /* 👈 전체 컨테이너 선 둘르기 */
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
@@ -302,16 +321,18 @@
   background-color: var(--bg-todo-card);
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid var(--border-color); /* 👈 개별 카드도 선 둘르기 (중요) */
+  border: 1px solid var(--border-color);
+  /* 👈 개별 카드도 선 둘르기 (중요) */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   transition: 0.2s;
 }
+
 .todo-card:hover {
   /* 라이트모드에선 호버 시 선을 조금 더 진하게 */
-  border-color: #cbd5e1; 
+  border-color: #cbd5e1;
   transform: translateY(-1px);
 }
 
@@ -357,12 +378,14 @@
 .user-profile-click {
   display: flex;
   align-items: center;
-  gap: 6px;                  /* 아이콘과 글자 사이 간격 */
+  gap: 6px;
+  /* 아이콘과 글자 사이 간격 */
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 6px;
   transition: all 0.2s ease;
-  text-decoration: none !important; /* 🚨 혹시 남아있을 밑줄 완전 박멸 */
+  text-decoration: none !important;
+  /* 🚨 혹시 남아있을 밑줄 완전 박멸 */
 }
 
 /* 사람 모양 아이콘 스타일 */
@@ -373,7 +396,8 @@
 
 /* 🚨 마우스를 올렸을 때(Hover) 터지는 이쁜 하이라이트 효과 */
 .user-profile-click:hover {
-  background-color: var(--border-color); /* 테마에 맞는 은은한 배경색이 감돎 */
+  background-color: var(--border-color);
+  /* 테마에 맞는 은은한 배경색이 감돎 */
 }
 
 /* 다크모드일 때 마우스 올리면 글자가 민트블루색으로 짜릿하게 변함 */
@@ -383,5 +407,65 @@
 
 /* 라이트모드일 때 마우스 올리면 글자가 조금 더 선명해짐 */
 .dashboard-container.light .user-profile-click:hover .user-name {
-  color: #0284c7; /* 조금 더 짙은 푸른빛 */
+  color: #0284c7;
+  /* 조금 더 짙은 푸른빛 */
+}
+
+/* 오답 리스트 개별 카드 마우스 호버 효과 추가 */
+.todo-card.clickable-card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo-card.clickable-card:hover {
+  border-color: #38bdf8;
+  /* 마우스 올리면 선이 민트블루로 빛남 */
+  transform: translateY(-2px);
+  /* 위로 살짝 들리는 쫀득한 손맛 효과 */
+}
+
+/* =========================================================
+ * [우측 오답 리스트 헤더 - 새 노트 작성 버튼 커스텀]
+ * ========================================================= */
+.add-note-toggle-btn {
+  background-color: transparent;
+  color: #38bdf8;
+  /* 시그니처 포인트 컬러 */
+  border: 1px solid #38bdf8;
+
+  /* 🚨 안쪽 여백(Padding)을 널널하게 늘려서 글자와 딱 맞추고 여유를 줌 */
+  padding: 8px 16px;
+  /* 위아래 8px, 좌우 16px로 널널하게 */
+
+  /* 테두리 둥글기를 조금 더 부드럽게 세팅 */
+  border-radius: 8px;
+
+  /* 폰트 크기를 살짝 키워서 버튼 크기에 맞춤 */
+  font-family: monospace, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+
+  /* 테마 전환 및 호버 시 부드러운 애니메이션 효과 */
+  transition: all 0.2s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  /* ➕ 기호와 글자 사이 간격 살짝 넓힘 */
+  box-sizing: border-box;
+  /* 패딩이 버튼 크기에 포함되도록 설정 */
+}
+
+/* 마우스 호버 시 디자인 (색상 반전 및 은은한 빛 효과) */
+.add-note-toggle-btn:hover {
+  background-color: #38bdf8;
+  /* 배경이 민트블루로 채워짐 */
+  color: #0f172a;
+  /* 글자는 다크 네이비로 반전 */
+  transform: translateY(-2px);
+  /* 쫀득하게 살짝 들리는 효과 */
+
+  /* 🚨 은은한 민트블루 글로우(Neon) 그림자 효과 추가 */
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/NoteWrite.css';
 
+/*
+ * 게시글 작성하는곳
+*/
+
 function NoteWrite(props) {
     const navigate = useNavigate();
 
@@ -11,7 +15,7 @@ function NoteWrite(props) {
     // 입력 폼들 State
     const [number, setNumber] = useState('');
     const [title, setTitle] = useState('');
-    const [type, setType] = useState('DP');
+    const [type, setType] = useState('');
     const [concept, setConcept] = useState('');     
     const [wrongReason, setWrongReason] = useState(''); 
     const [myCode, setMyCode] = useState('');       
@@ -34,13 +38,13 @@ function NoteWrite(props) {
         });
 
         alert("오답노트가 저장되었습니다. (백엔드 전송 준비 완료!)");
-        navigate("/"); 
+        //navigate("/"); 
     };
 
     return (
         <div className={`write-container ${isDarkMode ? 'dark' : 'light'}`}>
             
-            {/* 🚨 [새로 추가] 상단 네비게이션 로고 바 */}
+            {/* 상단 네비게이션 로고 바 */}
             <header className="write-navbar">
                 <div className="logo-row clickable-logo" onClick={() => navigate('/')}>
                     <span className="logo-icon">💻</span>
@@ -61,9 +65,7 @@ function NoteWrite(props) {
                     <div className="meta-row">
                         <div className="meta-group small">
                             <label>PROBLEM NO.</label>
-                            <input 
-                                type="number" 
-                                className="write-input" 
+                            <input type="number" className="write-input" 
                                 placeholder="ex) 1260"
                                 value={number}
                                 onChange={(e) => setNumber(e.target.value)}
@@ -71,9 +73,7 @@ function NoteWrite(props) {
                         </div>
                         <div className="meta-group">
                             <label>TITLE</label>
-                            <input 
-                                type="text" 
-                                className="write-input" 
+                            <input type="text" className="write-input" 
                                 placeholder="문제 이름을 입력하세요"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -81,13 +81,8 @@ function NoteWrite(props) {
                         </div>
                         <div className="meta-group">
                             <label>ALGORITHM TYPE</label>
-                            <select className="write-select" value={type} onChange={(e) => setType(e.target.value)}>
-                                <option value="DP">DP (동적계획법)</option>
-                                <option value="DFS/BFS">DFS / BFS</option>
-                                <option value="이분탐색">이분탐색</option>
-                                <option value="다익스트라">다익스트라</option>
-                                <option value="그리디">그리디</option>
-                            </select>
+                            {/* 🚨 className="write-input" 채워넣음! */}
+                            <input type="text" className="write-input" value={type} onChange={(e) => setType(e.target.value)} placeholder='알고리즘유형 ex)DP'/>
                         </div>
                     </div>
 
@@ -126,6 +121,7 @@ function NoteWrite(props) {
 
                     {/* 하단 제어 버튼 */}
                     <div className="write-btn-group">
+                        {/* 🚨 className="cancel-btn"이랑 "save-btn" 완벽 복구! */}
                         <button className="cancel-btn" onClick={() => navigate("/")}>취소</button>
                         <button className="save-btn" onClick={handleSave}>노트 등록</button>
                     </div>
