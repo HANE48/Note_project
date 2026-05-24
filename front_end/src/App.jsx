@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserDetail from './components/UserDetail'
 import NoteWrite from './components/NoteWrite'
 import PwdChange from './components/PwdChange'
+import axios from 'axios'
 
 function App() {
 	//true면 다크모드, false면 라이트모드
@@ -23,6 +24,8 @@ function App() {
 		return localStorage.getItem('id') || '';
 	});
 
+	const [myList, setMyList] = useState({});
+	//myList={myList} setMyList={setMyList}
 	useEffect(() => {
 		localStorage.setItem('isLogin', isLogin);
 		localStorage.setItem('user', user);
@@ -33,11 +36,26 @@ function App() {
 		localStorage.setItem('isDarkMode', isDarkMode);
 	}, [isDarkMode])
 
+	//아이디에 맞게 쓴글 조회
+	useEffect(()=>{
+		if(isLogin){
+			axios({
+				url: "http://localhost:8080/api/note/list?user_id="+id,
+				method: "get"
+			}).then(res=>{
+				setMyList(res.data);
+			}).catch(err=>{
+				console.log(err);
+				alert("서버 통신 중 에러 발생");
+			})
+		}
+	}, [isLogin, id])
+
 	return (
 		<div>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<MainDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} user={user} isLogin={isLogin} setUser={setUser} setIsLogin={setIsLogin} id={id} setId={setId} />} />
+					<Route path="/" element={<MainDashboard myList={myList} setMyList={setMyList} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} user={user} isLogin={isLogin} setUser={setUser} setIsLogin={setIsLogin} id={id} setId={setId} />} />
 					<Route path="/login.do" element={<Login isLogin={isLogin} setIsLogin={setIsLogin} user={user} setUser={setUser} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} id={id} setId={setId} />} />
 					<Route path="/register.do" element={<Register isDarkMode={isDarkMode} />} />
 					<Route path="/write.do" element={<NoteWrite isDarkMode={isDarkMode} id={id} />} />

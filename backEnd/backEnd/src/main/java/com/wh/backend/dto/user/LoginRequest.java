@@ -1,12 +1,12 @@
 package com.wh.backend.dto.user;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Schema(description = "로그인시 넘어오는 파라미터")
-@NoArgsConstructor
+@AllArgsConstructor
 public class LoginRequest {
 
     @Schema(description = "유저가 입력한 ID", example = "ID")

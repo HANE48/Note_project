@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35616f2d-f548-47ad-ab96-6908a0fcaf11" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/util/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API_SETTING.txt" beforeDir="false" afterPath="$PROJECT_DIR$/API_SETTING.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/TO-DO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/TO-DO.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/controller/ProblemNoteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/dto/user/EmailAuthDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/dao/ProblemNoteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/dao/ProblemNoteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/dto/user/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/dto/user/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/vo/UserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/java/com/wh/backend/vo/UserVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/TO-DO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/TO-DO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/mapper/problem_note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/mapper/problem_note.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/mapper/user_mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/backEnd/src/main/resources/mapper/user_mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/src/components/MainDashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/MainDashBoard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/src/components/NoteWrite.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/NoteWrite.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front_end/src/components/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/Register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/components/UserDetail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/UserDetail.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/css/MainDashBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/css/MainDashBoard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/css/NoteWrite.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/css/NoteWrite.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +46,44 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3E7WHNPGRgPZS5EivZ6xxDzF8li" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/hun2m/OneDrive/바탕 화면/project",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.backEnd 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackEndApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hun2m/OneDrive/바탕 화면/project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="BackEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backEnd.main" />
@@ -92,6 +110,8 @@
       <option name="presentableId" value="Default" />
       <updated>1779530000213</updated>
       <workItem from="1779530001374" duration="228000" />
+      <workItem from="1779531508376" duration="4536000" />
+      <workItem from="1779618528196" duration="6949000" />
     </task>
     <servers />
   </component>
