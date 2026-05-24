@@ -19,14 +19,8 @@ function UserDetail(props) {
 
     // 1. 비밀번호 변경 로직 (나중에 스프링에 PUT이나 POST 날릴 자리)
     const handleChangePassword = () => {
-        const currentPwd = prompt("현재 비밀번호를 입력하세요:");
-        if (!currentPwd) return;
-
-        const newPwd = prompt("새로운 비밀번호를 입력하세요:");
-        if (!newPwd) return;
-
-        // 임시 프롬프트 처리 -> 나중에 axios.put(...)으로 고칠 구역!
-        alert("비밀번호가 성공적으로 변경되었습니다. (백엔드 연동 예정)");
+        //비밀번호 변경 페이지로 이동해서 비밀번호 변경
+        navigate("/pwd_change.do");
     };
 
     // 2. 회원 탈퇴 로직 (나중에 스프링에 DELETE 요청 날릴 자리)

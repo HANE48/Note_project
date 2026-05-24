@@ -1,0 +1,67 @@
+/* =========================================================
+ * [개별 게시글 리스트 테마 변수]
+ * ========================================================= */
+.note-list-item.dark {
+    --bg-item: #1e293b;
+    /* 대시보드 카드 배경색이랑 통일 */
+    --text-main: #f8fafc;
+    --border-color: #334155;
+    --hover-bg: #0f172a;
+    /* 호버 시 살짝 어두워짐 */
+}
+
+.note-list-item.light {
+    --bg-item: #ffffff;
+    --text-main: #1e293b;
+    --border-color: #e2e8f0;
+    --hover-bg: #f8fafc;
+    /* 호버 시 아주 연한 회색 */
+}
+
+/* =========================================================
+ * [리스트 아이템 기본 레이아웃]
+ * ========================================================= */
+.note-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-item);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* 🚨 마우스 올렸을 때 오른쪽으로 쫀득하게 살짝 밀리는 애니메이션 */
+.note-list-item:hover {
+    background-color: var(--hover-bg);
+    border-color: #38bdf8;
+    /* 스튜디오 시그니처 컬러로 테두리 빛남 */
+    transform: translateX(4px);
+}
+
+.note-title {
+    font-family: monospace, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 우측 화살표 아이콘 */
+.go-arrow {
+    color: var(--text-sub);
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+/* 호버하면 화살표가 민트블루로 변하면서 더 오른쪽으로 찔러줌 */
+.note-list-item:hover .go-arrow {
+    color: #38bdf8;
+    transform: translateX(4px);
+}

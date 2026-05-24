@@ -4,5 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.wh.backend.dao.ProblemNoteDAO">
-    
+    <insert id="insertNote" parameterType="pn">
+        INSERT INTO problem_notes(user_id, title, problem_number, platform, tags, wrong_reason, solution_logic, created_at)
+        VALUES(#{user_id}, #{title}, #{problem_number}, #{platform}, #{tags}, #{wrong_reason}, #{solution_logic}, now())
+    </insert>
+    <select id="selectAll" parameterType="String" resultType="pn">
+        SELECT * FROM problem_notes WHERE user_id=#{user_id}
+    </select>
 </mapper>

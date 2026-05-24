@@ -2,13 +2,16 @@ package com.wh.backend.controller;
 
 import com.wh.backend.dao.UserDAO;
 import com.wh.backend.dto.user.*;
+import com.wh.backend.util.EmailSender;
 import com.wh.backend.util.PwdSecurity;
 import com.wh.backend.vo.UserVO;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,11 +20,7 @@ public class UserController {
 
     private final UserDAO userDAO;
     private final PwdSecurity pwdsec;
-
-    @GetMapping("test")
-    public String test(){
-        return "";
-    }
+    private final EmailSender mail;
 
     /**
      * 로그인 시에 사용하는 API
@@ -40,6 +39,7 @@ public class UserController {
         }else{
             return new LoginResponse("id", null, null);
         }
+
     }
 
     /**
@@ -63,6 +63,7 @@ public class UserController {
 
     /**
      * 마이페이지 진입시 유저의 고유 ID를 가지고 정보를 불러옴
+     * 미완성
      * @param id DB의 주키
      * @return 유저의 ID, 닉네임, 생성일자를 담은 DTO
      */
@@ -74,6 +75,7 @@ public class UserController {
 
     /**
      * 유저의 비밀번호를 한번 더 입력받아 맞을경우만 삭제
+     * 미완성
      * @param pwd   삭제를 위해 입력한 비밀번호
      * @param id    DB의 고유 ID
      * @return  삭제 여부에 대한 DTO
@@ -88,6 +90,18 @@ public class UserController {
         }else{
             return new UserDelDTO("fail", vo.getLoginId());
         }
+    }
+
+
+    /**
+     * 이메일인증에 사용하는 API
+     * @param email 이메일을 받아옴
+     * @return  성공여부 / 이메일인증번호를 넘겨줌
+     */
+    @PostMapping("/api/users/auth")
+    public EmailAuthDTO auth(@RequestBody Map<String, String> email){
+        System.out.println(email.get("email"));
+        return new EmailAuthDTO("success", mail.joinEmail(email.get("email")));
     }
 
 }
