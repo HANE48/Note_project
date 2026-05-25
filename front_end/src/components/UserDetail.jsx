@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/UserDetail.css';
+import axios from 'axios';
 
 function UserDetail(props) {
     const navigate = useNavigate();
@@ -28,12 +29,13 @@ function UserDetail(props) {
         const confirmDelete = window.confirm("정말로 회원을 탈퇴하시겠습니까? 오답노트 데이터가 전부 삭제됩니다.");
 
         if (confirmDelete) {
+
             // 탈퇴 성공 시 리액트 로그인 상태값들 전부 로그아웃 초기화
             props.setUser('');
             props.setIsLogin(false);
             props.setId('');
 
-            alert("회원 탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.");
+            alert("회원 탈퇴는 준비 예정입니다.");
             navigate("/"); // 메인으로 강제 이동
         }
     };

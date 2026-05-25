@@ -68,10 +68,27 @@ function MainDashboard(props) {
                             <h1 className='greeting'>환영합니다! 로그인후 이용해주세요!</h1>
                         }
                         <p className="subtext">"코드에 버그가 없다면, 아직 충분히 복잡하지 않은 것이다."</p>
-                    </section>
 
-                    <section className="grass-section">
-                        <h3 className="section-title">내가 작성한 게시글</h3>
+                        {/* 🚨 버튼 위치 조절 (제목은 정중앙, 버튼은 맨 왼쪽 고정) */}
+                        <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', minHeight: '40px' }}>
+
+                            {props.isLogin && (
+                                <button
+                                    className="add-note-toggle-btn"
+                                    onClick={() => navigate('/write.do')}
+                                    style={{ position: 'absolute', left: '0' }} /* 👈 핵심! 버튼을 부모 영역의 맨 왼쪽에 고정 */
+                                >
+                                    새 노트 작성
+                                </button>
+                            )}
+
+                            {/* 👈 제목은 position 영향 없이 무조건 한가운데로 렌더링됨 */}
+                            <h3 className="section-title" style={{ margin: 0, textAlign: 'center' }}>
+                                내가 작성한 게시글
+                            </h3>
+
+                        </div>
+
                         <div className="grass-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                             {props.isLogin ? (
                                 // 데이터가 있을 때와 없을 때를 구분해서 렌더링!
@@ -81,26 +98,13 @@ function MainDashboard(props) {
                                     ))
                                 ) : (
                                     <div style={{ color: 'var(--text-sub)' }}>
-                                        아직 작성한 게시글이 없습니다. 첫 노트를 작성해 보세요! 📝
+                                        아직 작성한 게시글이 없습니다. 첫 노트를 작성해 보세요!
                                     </div>
                                 )
                             ) : (
                                 <div style={{ color: 'var(--text-sub)' }}>
                                     로그인 후 작성한 게시글을 확인해 보세요!
                                 </div>
-                            )}
-                        </div>
-                    </section>
-                </div>
-
-                <div className="right-column">
-                    <section className="todo-container">
-                        <div className="todo-header">
-                            <h3 className="section-title">TODAY'S REVIEW TASK</h3>
-                            {props.isLogin && (
-                                <button className="add-note-toggle-btn" onClick={() => navigate('/write.do')}>
-                                    새 노트 작성
-                                </button>
                             )}
                         </div>
                     </section>
