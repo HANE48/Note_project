@@ -1,0 +1,161 @@
+/* =========================================================
+ * [비밀번호 변경 테마별 색상 변수]
+ * ========================================================= */
+.pwd-change-container.dark {
+    --bg-main: #0f172a;
+    --bg-box: #1e293b;
+    --bg-input: #0f172a;
+    --text-main: #f8fafc;
+    --text-label: #94a3b8;
+    --border-color: #334155;
+    --shadow-box: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.pwd-change-container.light {
+    --bg-main: #ffffff;
+    --bg-box: #ffffff;
+    --bg-input: #ffffff;
+    --text-main: #1e293b;
+    --text-label: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-box: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+ * [레이아웃 및 스타일]
+ * ========================================================= */
+.pwd-change-container {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace, sans-serif;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.pwd-change-box {
+    width: 420px;
+    background-color: var(--bg-box);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-box);
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.pwd-change-title {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cursor-pointer:hover {
+    opacity: 0.8;
+}
+
+.pwd-change-desc {
+    font-size: 12px;
+    color: var(--text-label);
+    line-height: 1.5;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+
+/* 기존 비번과 새 비번 구역을 나누는 세련된 선 */
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 25px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 12px;
+    color: var(--text-label);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.pwd-input {
+    width: 100%;
+    height: 45px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0 15px;
+    color: var(--text-main);
+    font-family: monospace;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.pwd-input:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 1px #38bdf8;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #7dd3fc;
+    transform: translateY(-1px);
+}
+
+.cancel-btn {
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    color: var(--text-label);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-main);
+}

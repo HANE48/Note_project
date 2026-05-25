@@ -20,10 +20,16 @@ public class ProblemNoteController {
         map.put("res", res);
         return map;
     }
-
+    
+    //아이디로 작성한 게시글을 불러옴
     @GetMapping("api/note/list")
     public List<ProblemNoteVO> list(@RequestParam String user_id){
         return problemNoteDAO.selectAll(user_id);
     }
+
+
+
+
+
 
 }

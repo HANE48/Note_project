@@ -32,7 +32,6 @@ function MainDashboard(props) {
             {/* 상단 네비게이션 바 */}
             <header className="navbar">
                 <div className="logo-row">
-                    <span className="logo-icon">💻</span>
                     <h2 className="logo-text">NOTE_STUDIO</h2>
                 </div>
 

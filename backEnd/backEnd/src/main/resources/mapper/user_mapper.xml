@@ -21,4 +21,12 @@
         SELECT * FROM users WHERE id=#{id}
     </select>
 
+    <select id="selectUserId" parameterType="String" resultType="user">
+        SELECT * FROM users WHERE login_id = #{login_id}
+    </select>
+
+    <update id="updateUserPwd" parameterType="user">
+        UPDATE users SET password=#{password} WHERE id=#{id}
+    </update>
+
 </mapper>

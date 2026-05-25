@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Login.css'; 
 
 function Login(props) {
@@ -44,11 +44,10 @@ function Login(props) {
     }
 
     return (
-        /* 🚨 [핵심 로직] 부모에게 받은 isDarkMode에 따라 dark 또는 light 클래스를 동적으로 부여! */
         <div className={`login-page-container ${isDarkMode ? 'dark' : 'light'}`}>
             <div className="login-box">
                 <h2 className="login-title cursor-pointer" onClick={() => navigate('/')}>
-                    💻 NOTE_LOGIN
+                    NOTE_LOGIN
                 </h2>
                 
                 <div className="input-group">
@@ -76,6 +75,7 @@ function Login(props) {
                 <div className="btn-group">
                     <input type="button" className="submit-btn" value="SIGN IN" onClick={send} />
                     <input type="button" className="register-btn" value="CREATE ACCOUNT" onClick={register} />
+                    <input type="button" className="register-btn" value="비밀번호 찾기" onClick={()=>{navigate("/find_pwd.do")}} />
                 </div>
             </div>
         </div>

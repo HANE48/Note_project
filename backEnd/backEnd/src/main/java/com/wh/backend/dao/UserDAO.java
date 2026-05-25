@@ -7,4 +7,6 @@ public interface UserDAO {
      UserVO selectOneUserId(int id);
      int insertUser(UserVO vo);
      int delete(int id);
+     int updateUserPwd(UserVO vo);
+     UserVO selectUserId(String login_id);
 }

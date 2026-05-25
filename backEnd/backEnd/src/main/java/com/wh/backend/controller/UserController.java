@@ -21,6 +21,7 @@ public class UserController {
     private final UserDAO userDAO;
     private final PwdSecurity pwdsec;
     private final EmailSender mail;
+    private final EmailSender emailSender;
 
     /**
      * 로그인 시에 사용하는 API
@@ -63,7 +64,6 @@ public class UserController {
 
     /**
      * 마이페이지 진입시 유저의 고유 ID를 가지고 정보를 불러옴
-     * 미완성
      * @param id DB의 주키
      * @return 유저의 ID, 닉네임, 생성일자를 담은 DTO
      */
@@ -92,7 +92,6 @@ public class UserController {
         }
     }
 
-
     /**
      * 이메일인증에 사용하는 API
      * @param email 이메일을 받아옴
@@ -100,8 +99,47 @@ public class UserController {
      */
     @PostMapping("/api/users/auth")
     public EmailAuthDTO auth(@RequestBody Map<String, String> email){
-        System.out.println(email.get("email"));
         return new EmailAuthDTO("success", mail.joinEmail(email.get("email")));
     }
+
+    @PostMapping("/api/users/find-pwd")
+    public Map<String, String> findPwd(@RequestBody Map<String, String> map){
+        String email = map.get("email");
+        String id = map.get("loginId");
+
+        UserVO vo = userDAO.selectUserId(id);
+
+        if(vo != null) {
+            String pwd = emailSender.findPwd(email);
+            vo.setPassword(pwdsec.pwdEncoding(pwd));
+        }
+
+        int res = userDAO.updateUserPwd(vo);
+        map.put("result", String.valueOf(res));
+
+        return map;
+    }
+
+    @PutMapping("/api/users/change-pwd")
+    public PwdChangeDTO changePwd(@RequestBody Map<String, String> map){
+        String id = map.get("id");
+        UserVO vo = userDAO.selectOneUserId(Integer.parseInt(id));
+
+        if(vo != null){
+            if(pwdsec.isRight(map.get("currentPwd"), vo.getPassword())){
+                vo.setPassword(pwdsec.pwdEncoding(map.get("newPwd")));
+            }else{
+                return new PwdChangeDTO("wrong-pwd");
+            }
+
+            int res = userDAO.updateUserPwd(vo);
+            if(res != 0){
+                return new PwdChangeDTO("success");
+            }
+
+        }
+        return new PwdChangeDTO("fail");
+    }//pwdChange
+
 
 }

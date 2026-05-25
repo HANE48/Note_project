@@ -57,4 +57,37 @@ public class EmailSender {
 
         return String.valueOf(authNum);
     }//joinEmail
+
+    public String findPwd(String email){
+        int pwd = new Random().nextInt(9999-1111+1) + 1111;
+        String setFrom = "hun2me@naver.com";
+        String toMail = email;
+        String title = "요청하신 임시비밀번호 입니다.";    //이메일의 제목
+        StringBuffer sb = new StringBuffer();
+
+        sb.append("<h3> 임시 비밀번호입니다 </h3>")
+                .append("<h1><b>")
+                .append(pwd)
+                .append("</b></h1>")
+                .append("<b>로그인 하신후 꼭 비민번호 변경 바랍니다!</b>")
+                .append("<p>감사합니다</p>");
+
+        try{
+            MimeMessage message = jms.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(sb.toString(), true);    //html의 태그를 동작하게 하기 위해 true
+
+            jms.send(message);
+        }catch(Exception e){
+            System.err.println(e);
+        }
+
+        return String.valueOf(pwd);
+    }//findpwd
+
+
 }
