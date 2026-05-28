@@ -54,13 +54,10 @@
 
 | 메인 대시보드 (Dark) | 메인 대시보드 (Light) |
 | :---: | :---: |
-|   <img width="843" height="683" alt="darkmode_main" src="https://github.com/user-attachments/assets/2146319f-c199-4a6b-9559-290532f67e54" />
- | <img width="850" height="680" alt="rightMode_main" src="https://github.com/user-attachments/assets/b5faa97d-77e0-4380-b462-cefbd674e89b" /> |
+|   <img width="843" height="683" alt="darkmode_main" src="https://github.com/user-attachments/assets/2146319f-c199-4a6b-9559-290532f67e54" />| <img width="850" height="680" alt="rightMode_main" src="https://github.com/user-attachments/assets/b5faa97d-77e0-4380-b462-cefbd674e89b" /> |
 | **회원가입 & 이메일 인증** | **노트 작성 & 상세 보기** |
-| <img width="849" height="677" alt="register" src="https://github.com/user-attachments/assets/7db5498e-8644-459f-b2bf-806723777bc1" /> 
-| <img width="851" height="678" alt="detail" src="https://github.com/user-attachments/assets/e9f9f814-c60b-475e-8fb9-37b7c5469814" /> |
+| <img width="849" height="677" alt="register" src="https://github.com/user-attachments/assets/7db5498e-8644-459f-b2bf-806723777bc1" /> | <img width="851" height="678" alt="detail" src="https://github.com/user-attachments/assets/e9f9f814-c60b-475e-8fb9-37b7c5469814" /> |
 
-*(※ 실제 GitHub 업로드 시 캡처 화면을 `src` 란에 드래그 앤 드롭하여 링크를 채워주세요.)*
 
 <br/>
 
