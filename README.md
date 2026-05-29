@@ -19,11 +19,11 @@
 - **Vanilla CSS** (Custom Dark/Light Theme Design System)
 
 ### Backend
-- Java / Spring Boot
-- MyBatis
-- MySQL 
-- JavaMailSender (Email Authentication)
-- Bcrypt  (password 암호화)
+- **Java / Spring Boot**
+- **MyBatis**
+- **MySQL** 
+- **JavaMailSender** (Email Authentication)
+- **Bcrypt**  (password 암호화)
 
 <br/>
 
